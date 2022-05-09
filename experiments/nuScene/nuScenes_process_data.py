@@ -1,9 +1,7 @@
 from pickle import NONE
-from utils.lane_utils import get_each_timestamp_lane
 from nuscenes.nuscenes import NuScenes
 from nuscenes.map_expansion.map_api import NuScenesMap
 from nuscenes.utils.splits import create_splits_scenes
-from environment import Environment, Scene, Node, GeometricMap, derivative_of
 import sys
 import os
 import numpy as np
@@ -20,6 +18,8 @@ nu_path = "./devkit/python-sdk/"
 sys.path.append(nu_path)
 sys.path.append("../../Transformer")
 
+from utils.lane_utils import get_each_timestamp_lane
+from environment import Environment, Scene, Node, GeometricMap, derivative_of
 
 scene_blacklist = [499, 515, 517]
 
