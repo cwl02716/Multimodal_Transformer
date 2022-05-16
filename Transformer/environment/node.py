@@ -18,7 +18,8 @@ class Node(object):
             is_robot=False,
             description="",
             frequency_multiplier=1,
-            non_aug_node=None):
+            non_aug_node=None,
+            sample_id=None,):
         self.type = node_type
         self.id = node_id
         self.length = length
@@ -28,6 +29,7 @@ class Node(object):
         self.non_aug_node = non_aug_node
         self.lanes_point = None
         self.lanes_id = None
+        self.sample_id = sample_id
 
         if data is not None:
             if isinstance(data, pd.DataFrame):
@@ -183,7 +185,8 @@ class MultiNode(Node):
             return Node(node_type=self.type,
                         node_id='EMPTY',
                         data=self.nodes_list[0].data * np.nan,
-                        is_robot=self.is_robot)
+                        is_robot=self.is_robot,
+                        sample_id =self.sample_id)
 
         node_idx = random.choice(possible_node_ranges)[2]
         return self.nodes_list[node_idx]

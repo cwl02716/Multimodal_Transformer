@@ -123,6 +123,8 @@ def augment_scene(scene, angle, lane_process):
                 node_id=node.id,
                 data=node_data,
                 first_timestep=node.first_timestep,
+                sample_id = sample_token,
+
             )
         elif node.type == "VEHICLE":
             x = node.data.position.x.copy()
@@ -183,6 +185,7 @@ def augment_scene(scene, angle, lane_process):
                 data=node_data,
                 first_timestep=node.first_timestep,
                 non_aug_node=node,
+                sample_id = sample_token,
             )
 
             # if lane_process:
@@ -519,6 +522,7 @@ def process_scene(ns_scene, env, nusc, data_path, lane_process):
             node_id=node_id,
             data=node_data,
             frequency_multiplier=node_frequency_multiplier,
+            sample_id=sample_token,
         )
         node.first_timestep = node_df["frame_id"].iloc[0]
 
