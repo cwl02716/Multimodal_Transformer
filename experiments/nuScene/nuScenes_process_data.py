@@ -71,7 +71,7 @@ standardization = {
 }
 
 
-def augment_scene(scene, angle, lane_process):
+def augment_scene(scene, angle, lane_process, sample_token):
     def rotate_pc(pc, alpha):
         M = np.array([[np.cos(alpha), -np.sin(alpha)], [np.sin(alpha), np.cos(alpha)]])
         return M @ pc
@@ -598,7 +598,7 @@ def process_data(data_path, version, output_path, val_split, lane_process):
                     angles = np.arange(0, 360, 15)
                     for angle in angles:
                         scene.augmented.append(
-                            augment_scene(scene, angle, lane_process)
+                            augment_scene(scene, angle, lane_process, ns_scene["first_sample_token"])
                         )
                 scenes.append(scene)
 
